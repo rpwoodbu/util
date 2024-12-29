@@ -3,7 +3,7 @@
 
 #include "absl/time/clock.h"
 
-namespace util {
+namespace util::time {
 
 class Clock {
  public:
@@ -29,6 +29,6 @@ class SystemClock : public Clock {
 //
 Clock& SystemClock();
 
-}  // namespace util
+}  // namespace util::time
 
 #endif  // __UTIL_CLOCK_H__

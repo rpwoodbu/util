@@ -4,14 +4,14 @@
 #include "absl/time/time.h"
 #include "util/time/fake_clock.h"
 
-namespace util {
+namespace util::time {
 namespace {
 
 using testing::IsFalse;
 using testing::IsTrue;
 
 TEST(IsTimeBetween, Basic) {
-  util::FakeClock clock;
+  FakeClock clock;
 
   clock.Set(absl::FromCivil(absl::CivilHour(1955, 11, 5, 0), absl::LocalTimeZone()));
   EXPECT_THAT(clock.IsTimeBetween(1, 2), IsFalse());
@@ -24,7 +24,7 @@ TEST(IsTimeBetween, Basic) {
 }
 
 TEST(IsTimeBetween, Wrapped) {
-  util::FakeClock clock;
+  FakeClock clock;
   clock.Set(absl::FromCivil(absl::CivilHour(1955, 11, 5, 0), absl::LocalTimeZone()));
   EXPECT_THAT(clock.IsTimeBetween(23, 1), IsTrue());
 
@@ -33,4 +33,4 @@ TEST(IsTimeBetween, Wrapped) {
 }
 
 }  // anonymous namespace
-}  // namespace util
+}  // namespace util::time

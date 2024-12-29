@@ -6,7 +6,7 @@
 
 #include "util/time/clock.h"
 
-namespace util {
+namespace util::time {
 
 class FakeClock : public Clock {
  public:
@@ -30,6 +30,6 @@ class FakeClock : public Clock {
   absl::Time now_;
 };
 
-}  // namespace util
+}  // namespace util::time
 
 #endif  // __UTIL_FAKE_CLOCK_H__

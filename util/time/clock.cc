@@ -1,6 +1,6 @@
 #include "util/time/clock.h"
 
-namespace util {
+namespace util::time {
 
 class SystemClock SystemClock::clock;
 
@@ -21,4 +21,4 @@ bool Clock::IsTimeBetween(int start_hour, int end_hour) const {
   return hour >= start_hour && hour < end_hour;
 }
 
-}  // namespace util
+}  // namespace util::time
