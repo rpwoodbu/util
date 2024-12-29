@@ -1,4 +1,4 @@
-build --cxxopt=-std=c++17
+build --cxxopt=-std=c++17 --copt=-Wall --copt=-Werror
 
 # Silence warning about not being able to autoload `rules_android`.
 # See https://github.com/bazelbuild/bazel/issues/23929.
