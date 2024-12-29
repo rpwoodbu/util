@@ -1,0 +1,5 @@
+module(name = "util", version = "0.0.0")
+
+bazel_dep(name = "abseil-cpp", version = "20240722.0.bcr.2", repo_name = "absl")
+
+bazel_dep(name = "googletest", version = "1.15.2")

@@ -1,0 +1,5 @@
+build --cxxopt=-std=c++17
+
+# Silence warning about not being able to autoload `rules_android`.
+# See https://github.com/bazelbuild/bazel/issues/23929.
+build --incompatible_autoload_externally="+@rules_shell"
