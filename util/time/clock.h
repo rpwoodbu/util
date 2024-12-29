@@ -7,16 +7,21 @@ namespace util::time {
 
 class Clock {
  public:
-  virtual absl::Time Now() const = 0;
-  bool IsTimeBetween(int start_hour, int end_hour) const;
+  virtual ~Clock() = default;
+
+  virtual absl::Time Now() = 0;
+
+  bool IsTimeBetween(int start_hour, int end_hour);
 };
 
 class SystemClock : public Clock {
  public:
-  // Get the singleton SystemClock.
-  static Clock& Get() { return clock; }
+  ~SystemClock() override = default;
 
-  absl::Time Now() const override {
+  // Get the singleton SystemClock.
+  static Clock* Get() { return &clock; }
+
+  absl::Time Now() override {
     return absl::Now();
   }
 
@@ -25,9 +30,6 @@ class SystemClock : public Clock {
 
   static class SystemClock clock;
 };
-
-//
-Clock& SystemClock();
 
 }  // namespace util::time
 

@@ -12,7 +12,7 @@ class FakeClock : public Clock {
  public:
   FakeClock() = default;
   explicit FakeClock(absl::Time now) : now_(std::move(now)) {}
-  ~FakeClock() = default;
+  ~FakeClock() override = default;
 
   void Set(absl::Time now) {
     now_ = std::move(now);
@@ -22,12 +22,19 @@ class FakeClock : public Clock {
     now_ += duration;
   }
 
-  absl::Time Now() const override {
+  // Advance by this much in each call to `Now()`.
+  void AdvanceOnNow(absl::Duration duration) {
+    advance_ = duration;
+  }
+
+  absl::Time Now() override {
+    now_ += advance_;
     return now_;
   }
 
  private:
   absl::Time now_;
+  absl::Duration advance_;
 };
 
 }  // namespace util::time

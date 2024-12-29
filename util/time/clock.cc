@@ -4,7 +4,7 @@ namespace util::time {
 
 class SystemClock SystemClock::clock;
 
-bool Clock::IsTimeBetween(int start_hour, int end_hour) const {
+bool Clock::IsTimeBetween(int start_hour, int end_hour) {
   const auto now = Now();
   const auto local_time = absl::ToCivilHour(now, absl::LocalTimeZone());
   auto hour = local_time.hour();

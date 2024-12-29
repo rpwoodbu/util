@@ -27,3 +27,25 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "period",
+    srcs = ["period.cc"],
+    hdrs = ["period.h"],
+    deps = [
+        ":clock",
+        "@absl//absl/time",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_test(
+    name = "period_test",
+    srcs = ["period_test.cc"],
+    deps = [
+        ":period",
+        ":fake_clock",
+        "@absl//absl/time",
+        "@googletest//:gtest_main",
+    ],
+)
